@@ -153,7 +153,6 @@ function nextSlideClick() {
 			$(".bwslider-slide").removeClass("bwslider-prev-slide");
 			$(this).addClass("bwslider-prev-slide");
 			if (transitionMode === "slide") {
-				alert("ff");
 				$(".bwslider-prev-slide").css('margin-left','-' + slideWidth + '%');
 			}
 		} else if (index === (lastActiveSlide)) {
