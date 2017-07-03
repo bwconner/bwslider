@@ -1,0 +1,103 @@
+.bwslider {
+	width: 100%;
+}
+
+	.bwslider .bwslider-stack {
+		padding: 0px;
+		margin: 0px;
+	}
+
+	.bwslider .bwslider-slide {
+		display: none;
+		float: left;
+		list-style-type: none;
+		width: 100%;
+		opacity: 0;
+	}
+
+		.bwslider .bwslider-slide.bwslider-active-slide {
+			display: inline-block;
+			opacity: 1;
+		}
+
+		.bwslider .bwslider-slide img {
+			width: 100%;
+		}
+
+	.bwslider .bwslider-arrow {
+		background: no-repeat;
+		background-size: contain;
+		cursor: pointer;
+		position: absolute;
+		z-index: 100;
+		background-position: center center;
+		min-height: 100px;
+		min-width: 100px;
+	}
+
+	.bwslider .bwslider-prev {
+		background-image: url("imgs/arrow-left.png");
+		left: 0px;
+	}
+
+	.bwslider .bwslider-next {
+		background-image: url("imgs/arrow-right.png");
+		right: 0px;
+	}
+
+/*Transition Styles*/
+/*Fade*/
+.bwslider-transition-fade .bwslider-slide {
+	-webkit-transition: all .5s ease-in;
+	-moz-transition: all .5s ease-in;
+	-ms-transition: all .5s ease-in;
+	-o-transition: all .5s ease-in;
+	transition: all .5s ease-in;
+	position: absolute;
+	display: inline-block;
+	opacity: 0;
+}
+	.bwslider-transition-fade .bwslider-slide.bwslider-active-slide {
+		position: absolute;
+		display: inline-block;
+		opacity: 1;
+	}
+
+/*Slide*/
+.bwslider-transition-slide .bwslider-slide {
+	transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+	margin-left: 0;
+	opacity: 1;
+}
+	.bwslider-transition-slide .bwslider-slide.bwslider-prev-slide {
+		display: inline-block;
+		opacity: 1;
+		position: absolute;
+		margin-left: -100%;
+	}
+	.bwslider-transition-slide .bwslider-slide.bwslider-next-slide {
+		display: inline-block;
+		opacity: 1;
+		position: absolute;
+		margin-left: 100%;
+	}
+	.bwslider-transition-slide .bwslider-slide.bwslider-active-slide {
+		left: 0;
+	}
+
+/*Flash*/
+.bwslider-transition-flash .bwslider-slide {
+	-webkit-transition: all .5s ease-in;
+	-moz-transition: all .5s ease-in;
+	-ms-transition: all .5s ease-in;
+	-o-transition: all .5s ease-in;
+	transition: all .5s ease-in;
+	position: absolute;
+	display: inline-block;
+	opacity: 0;
+}
+	.bwslider-transition-flash .bwslider-slide.bwslider-active-slide {
+		position: absolute;
+		display: inline-block;
+		opacity: 1;
+	}
