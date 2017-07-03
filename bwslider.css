@@ -73,13 +73,11 @@
 		display: inline-block;
 		opacity: 1;
 		position: absolute;
-		margin-left: -100%;
 	}
 	.bwslider-transition-slide .bwslider-slide.bwslider-next-slide {
 		display: inline-block;
 		opacity: 1;
 		position: absolute;
-		margin-left: 100%;
 	}
 	.bwslider-transition-slide .bwslider-slide.bwslider-active-slide {
 		left: 0;
@@ -87,11 +85,11 @@
 
 /*Flash*/
 .bwslider-transition-flash .bwslider-slide {
-	-webkit-transition: all .5s ease-in;
-	-moz-transition: all .5s ease-in;
-	-ms-transition: all .5s ease-in;
-	-o-transition: all .5s ease-in;
-	transition: all .5s ease-in;
+	-webkit-transition: all .1s ease-in;
+	-moz-transition: all .1s ease-in;
+	-ms-transition: all .1s ease-in;
+	-o-transition: all .1s ease-in;
+	transition: all .1s ease-in;
 	position: absolute;
 	display: inline-block;
 	opacity: 0;

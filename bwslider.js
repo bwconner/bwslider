@@ -7,7 +7,7 @@ var infitineScroll = false;
 var firstActiveSlide = 0;
 var lastActiveSlide = 0;
 var transitionMode = ""; //this will be used to surround js that only needs to be called for certain transition modes
-
+var slideWidth = "100%";
 //var bwslider = {}
 
 function sliderDataSetup() {
@@ -15,7 +15,7 @@ function sliderDataSetup() {
 	numberOfTotalSlides = $(".bwslider-slide").length; //Get the number of total slides
 	slidesPerClick = parseInt($(".bwslider").attr("data-slides-per-click")); //Set the number of slides to scroll per click
 	$(".bwslider").addClass("bwslider-transition-" + $(".bwslider").attr("data-slide-transition"));
-	
+	transitionMode = $(".bwslider").attr('data-slide-transition').toLowerCase();
 	//Verify no undefined values
 }
 
@@ -25,7 +25,7 @@ function sliderTransitionSetup() {
 	var scrollMode = $(".bwslider").attr('data-slide-transition');
 	scrollMode = scrollMode.toLowerCase();
 
-	if (scrollMode === "scroll") {
+	if (transitionMode === "scroll") {
 		$(document).on("mouseover", ".bwslider-next", function() {
 			forwardScroll();
 		});
@@ -65,7 +65,7 @@ function numberOfSlidesToDisplay() {
 
 	lastActiveSlide = numberOfActiveSlides;
 
-	var slideWidth = 100/numberOfActiveSlides;
+	slideWidth = 100/numberOfActiveSlides;
 	$(".bwslider-slide").css("width", slideWidth + "%");
 
 	$( ".bwslider-slide" ).each(function(index) {
@@ -76,12 +76,22 @@ function numberOfSlidesToDisplay() {
 
 		if (index === firstActiveSlide - 1) {
 			$(this).addClass("bwslider-prev-slide");
+			if (transitionMode === "slide") {
+				$(".bwslider-prev-slide").css('margin-left','-' + slideWidth + '%');
+			}
 		}
 
 		if (index === lastActiveSlide) {
 			$(this).addClass("bwslider-next-slide");
+			if (transitionMode === "slide") {
+				$(".bwslider-next-slide").css('margin-left', slideWidth + '%');
+			}
 		}
 
+		if (index % numberOfActiveSlides !== 0 && transitionMode === "fade") {
+			$(this).css('margin-left', slideWidth * (index % numberOfActiveSlides) + '%');
+		}
+		
 		//may not need this
 		//if (index === 0) {
 		//	$(this).addClass("bwslider-first-active-slide"); //may not need this
@@ -142,9 +152,16 @@ function nextSlideClick() {
 		if (index === (firstActiveSlide - 1)) {
 			$(".bwslider-slide").removeClass("bwslider-prev-slide");
 			$(this).addClass("bwslider-prev-slide");
+			if (transitionMode === "slide") {
+				alert("ff");
+				$(".bwslider-prev-slide").css('margin-left','-' + slideWidth + '%');
+			}
 		} else if (index === (lastActiveSlide)) {
 			$(".bwslider-slide").removeClass("bwslider-next-slide");
 			$(this).addClass("bwslider-next-slide");
+			if (transitionMode === "slide") {
+				$(".bwslider-next-slide").css('margin-left', slideWidth + '%');
+			}
 		}
 	});
 }
@@ -159,16 +176,19 @@ function prevSlideClick() {
 		} else {
 			$(this).removeClass("bwslider-active-slide");
 		}
-console.log("index:" + index);
-console.log("prev:" + (firstActiveSlide - 1));
-console.log("next:" + (lastActiveSlide + 1));
+
 		if (index === (firstActiveSlide - 1)) {
 			$(".bwslider-slide").removeClass("bwslider-prev-slide");
 			$(this).addClass("bwslider-prev-slide");
-		}
-		if (index === (lastActiveSlide)) {
+			if (transitionMode === "slide") {
+				$(".bwslider-prev-slide").css('margin-left','-' + slideWidth + '%');
+			}
+		} else if (index === (lastActiveSlide)) {
 			$(".bwslider-slide").removeClass("bwslider-next-slide");
 			$(this).addClass("bwslider-next-slide");
+			if (transitionMode === "slide") {
+				$(".bwslider-next-slide").css('margin-left', slideWidth + '%');
+			}
 		}
 	});
 }
