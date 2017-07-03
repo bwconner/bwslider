@@ -88,10 +88,11 @@ function numberOfSlidesToDisplay() {
 			}
 		}
 
-		if (index % numberOfActiveSlides !== 0 && transitionMode === "fade") {
+		//For Fade or Flash mode, appropriately place background slides with correct margins
+		if (index % numberOfActiveSlides !== 0 && (transitionMode === "fade" || transitionMode === "flash")) {
 			$(this).css('margin-left', slideWidth * (index % numberOfActiveSlides) + '%');
 		}
-		
+
 		//may not need this
 		//if (index === 0) {
 		//	$(this).addClass("bwslider-first-active-slide"); //may not need this
@@ -102,7 +103,6 @@ function numberOfSlidesToDisplay() {
 		//	$(this).addClass("bwslider-last-active-slide"); //may not need this
 		//	lastActiveSlide = index;
 		//}
-
 	});
 }
 

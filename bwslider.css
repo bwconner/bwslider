@@ -85,13 +85,13 @@
 
 /*Flash*/
 .bwslider-transition-flash .bwslider-slide {
-	-webkit-transition: all .1s ease-in;
-	-moz-transition: all .1s ease-in;
-	-ms-transition: all .1s ease-in;
-	-o-transition: all .1s ease-in;
-	transition: all .1s ease-in;
+	-webkit-transition: all .5s ease-out;
+	-moz-transition: all .5s ease-out;
+	-ms-transition: all .5s ease-out;
+	-o-transition: all 5s ease-out;
+	transition: all .5s ease-out;
 	position: absolute;
-	display: inline-block;
+	display: none;
 	opacity: 0;
 }
 	.bwslider-transition-flash .bwslider-slide.bwslider-active-slide {
