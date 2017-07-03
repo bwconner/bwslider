@@ -78,6 +78,7 @@ function numberOfSlidesToDisplay() {
 		if (index === firstActiveSlide - 1) {
 			$(this).addClass("bwslider-prev-slide");
 			if (transitionMode === "slide") {
+				alert("ff");
 				$(".bwslider-prev-slide").css('margin-left','-' + slideWidth + '%');
 			}
 		}
@@ -166,7 +167,7 @@ function nextSlide() {
 	$( ".bwslider-slide" ).each(function(index) {
 		if ((index >= firstActiveSlide) && (index < lastActiveSlide)) {
 			$(this).addClass("bwslider-active-slide");
-			$(".bwslider-prev-slide").css('margin-left','0');
+			$(".bwslider-active-slide").css('margin-left','0%');
 		} else {
 			$(this).removeClass("bwslider-active-slide");
 		}
@@ -189,6 +190,7 @@ function prevSlide() {
 	$( ".bwslider-slide" ).each(function(index) {
 		if ((index >= firstActiveSlide) && (index < lastActiveSlide)) {
 			$(this).addClass("bwslider-active-slide");
+			$(".bwslider-active-slide").css('margin-left','0%');
 		} else {
 			$(this).removeClass("bwslider-active-slide");
 		}
