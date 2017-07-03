@@ -111,8 +111,6 @@ function numberOfSlidesToDisplay() {
 function incrementSlider() {
 	firstActiveSlide = firstActiveSlide + slidesPerClick;
 	lastActiveSlide = lastActiveSlide + slidesPerClick;
-console.log(firstActiveSlide);
-console.log(lastActiveSlide);
 	if (firstActiveSlide < 0) {
 		firstActiveSlide = 0;
 		lastActiveSlide = numberOfActiveSlides;
