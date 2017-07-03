@@ -45,20 +45,12 @@ function sliderTransitionSetup() {
 		});		
 	}
 
-
-
 	if (infitineScroll === true) {
 
 	}
 }
 
 function numberOfSlidesToDisplay() {
-	//get number of slides to display data attr
-	//divide 100 by that data attr
-	//add that css width to slide elements
-	//use this number to determine number of slides to add active classes to
-	//add first slider and last slide classes
-
 	//Cap the number of active slides by the number of total slides
 	if (numberOfActiveSlides > numberOfTotalSlides) {
 		numberOfActiveSlides = numberOfTotalSlides;
@@ -93,17 +85,6 @@ function numberOfSlidesToDisplay() {
 		if (index % numberOfActiveSlides !== 0) {
 			$(this).css('margin-left', slideWidth * (index % numberOfActiveSlides) + '%');
 		}
-
-		//may not need this
-		//if (index === 0) {
-		//	$(this).addClass("bwslider-first-active-slide"); //may not need this
-		//}
-
-		//may not need this
-		//if (index === numberOfActiveSlides) {
-		//	$(this).addClass("bwslider-last-active-slide"); //may not need this
-		//	lastActiveSlide = index;
-		//}
 	});
 }
 
