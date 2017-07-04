@@ -70,21 +70,12 @@
 	transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
 	margin-left: -100%;
 	opacity: 1;
+	display:inline-block;
+	position: absolute;
 }
-	.bwslider-transition-slide .bwslider-slide.bwslider-prev-slide {
-		display: inline-block;
-		opacity: 1;
-		position: absolute;
-	}
-	.bwslider-transition-slide .bwslider-slide.bwslider-next-slide {
-		display: inline-block;
-		opacity: 1;
-		position: absolute;
-	}
 	.bwslider-transition-slide .bwslider-slide.bwslider-active-slide {
 		margin-left: 0%;
 		opacity: 1;
-		display: inline-block;
 		position: absolute;
 	}
 
