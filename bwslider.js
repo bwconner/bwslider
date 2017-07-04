@@ -70,7 +70,7 @@ function numberOfSlidesToDisplay() {
 		if (index === firstActiveSlide - 1) {
 			$(this).addClass("bwslider-prev-slide");
 			if (transitionMode === "slide") {
-				$(".bwslider-prev-slide").css('margin-left','-' + slideWidth + '%');
+				$(this).css('margin-left','-' + slideWidth + '%');
 			}
 		}
 
@@ -157,7 +157,7 @@ function nextSlide() {
 		if (index === (firstActiveSlide - 1)) {
 			$(".bwslider-slide").removeClass("bwslider-prev-slide");
 			$(this).addClass("bwslider-prev-slide");
-			$(".bwslider-prev-slide").css('margin-left','-' + slideWidth + '%');
+			$(this).css('margin-left','-' + slideWidth + '%');
 		} else if (index === (lastActiveSlide)) {
 			$(".bwslider-slide").removeClass("bwslider-next-slide");
 			$(this).addClass("bwslider-next-slide");
@@ -183,7 +183,7 @@ function prevSlide() {
 		if (index === (firstActiveSlide - 1)) {
 			$(".bwslider-slide").removeClass("bwslider-prev-slide");
 			$(this).addClass("bwslider-prev-slide");
-			$(".bwslider-prev-slide").css('margin-left','-' + slideWidth + '%');
+			$(this).css('margin-left','-' + slideWidth + '%');
 		} else if (index === (lastActiveSlide)) {
 			$(".bwslider-slide").removeClass("bwslider-next-slide");
 			$(this).addClass("bwslider-next-slide");
