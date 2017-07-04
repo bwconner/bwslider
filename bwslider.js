@@ -86,6 +86,9 @@ function numberOfSlidesToDisplay() {
 			$(this).css('margin-left', slideWidth * (index % numberOfActiveSlides) + '%');
 		}
 	});
+
+	var sliderHeight = $(".bwslider-slide img").height();
+	$(".bwslider").css('height', sliderHeight);
 }
 
 
@@ -242,6 +245,11 @@ function bwsliderInit() {
 	sliderDataSetup();
 	sliderTransitionSetup();
 	numberOfSlidesToDisplay();
+
+	$(window).resize(function() {
+		var sliderHeight = $(".bwslider-slide img").height();
+		$(".bwslider").css('height', sliderHeight);
+	});
 }
 
 

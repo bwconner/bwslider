@@ -1,5 +1,7 @@
 .bwslider {
 	width: 100%;
+	position: relative;
+	overflow: hidden;
 }
 
 	.bwslider .bwslider-stack {
