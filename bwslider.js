@@ -85,7 +85,7 @@ function numberOfSlidesToDisplay() {
 		}
 	});
 
-	var sliderHeight = $(".bwslider-slide img").height();
+	var sliderHeight = $(".bwslider-active-slide img").height();
 	$(".bwslider").css('height', sliderHeight);
 }
 
@@ -258,7 +258,7 @@ function bwsliderInit() {
 	numberOfSlidesToDisplay();
 
 	$(window).resize(function() {
-		var sliderHeight = $(".bwslider-slide img").height();
+		var sliderHeight = $(".bwslider-active-slide img").height();
 		$(".bwslider").css('height', sliderHeight);
 	});
 }
