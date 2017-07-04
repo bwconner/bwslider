@@ -70,14 +70,14 @@ function numberOfSlidesToDisplay() {
 		if (index === firstActiveSlide - 1) {
 			$(this).addClass("bwslider-prev-slide");
 			if (transitionMode === "slide") {
-				$(this).css('margin-left','-' + slideWidth + '%');
+				$(".bwslider-prev-slide").css('margin-left','-' + slideWidth + '%');
 			}
 		}
 
 		if (index === lastActiveSlide) {
 			$(this).addClass("bwslider-next-slide");
 			if (transitionMode === "slide") {
-				$(this).css('margin-left', '100%');
+				$(".bwslider-next-slide").css('margin-left', '100%');
 			}
 		}
 
@@ -157,11 +157,11 @@ function nextSlide() {
 		if (index === (firstActiveSlide - 1)) {
 			$(".bwslider-slide").removeClass("bwslider-prev-slide");
 			$(this).addClass("bwslider-prev-slide");
-			$(this).css('margin-left','-' + slideWidth + '%');
+			$(".bwslider-prev-slide").css('margin-left','-' + slideWidth + '%');
 		} else if (index === (lastActiveSlide)) {
 			$(".bwslider-slide").removeClass("bwslider-next-slide");
 			$(this).addClass("bwslider-next-slide");
-			$(this).css('margin-left', '100%');
+			$(".bwslider-next-slide").css('margin-left', '100%');
 		}
 	});
 }
@@ -183,11 +183,11 @@ function prevSlide() {
 		if (index === (firstActiveSlide - 1)) {
 			$(".bwslider-slide").removeClass("bwslider-prev-slide");
 			$(this).addClass("bwslider-prev-slide");
-			$(this).css('margin-left','-' + slideWidth + '%');
+			$(".bwslider-prev-slide").css('margin-left','-' + slideWidth + '%');
 		} else if (index === (lastActiveSlide)) {
 			$(".bwslider-slide").removeClass("bwslider-next-slide");
 			$(this).addClass("bwslider-next-slide");
-			$(this).css('margin-left', '100%');
+			$(".bwslider-next-slide").css('margin-left', '100%');
 		}
 	});
 }
