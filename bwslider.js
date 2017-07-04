@@ -21,11 +21,6 @@ function sliderDataSetup() {
 }
 
 function sliderTransitionSetup() {
-	//determine scroll mode
-	//wire click events based on
-	var scrollMode = $(".bwslider").attr('data-slide-transition');
-	scrollMode = scrollMode.toLowerCase();
-
 	if (transitionMode === "scroll") {
 		$(document).on("mouseover", ".bwslider-next", function() {
 			forwardScroll();
