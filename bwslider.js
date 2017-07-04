@@ -2,30 +2,39 @@
 var numberOfActiveSlides = 1;
 var numberOfTotalSlides = 1;
 var slidesPerClick = 1;
+var transitionMode = ""; //this will be used to surround js that only needs to be called for certain transition modes
+var infitineScroll = false;
 var firstActiveSlide = 0;
 var lastActiveSlide = 0;
-var infitineScroll = false;
-var transitionMode = ""; //this will be used to surround js that only needs to be called for certain transition modes
 var slideWidth = "100%";
 //var bwslider = {}
 
 function sliderDataSetup() {
+	//Pull in values for global variables
 	numberOfActiveSlides = parseInt($(".bwslider").attr("data-slides-to-show")); //Get the number of slides to show from the data attr
 	numberOfTotalSlides = $(".bwslider-slide").length; //Get the number of total slides
 	slidesPerClick = parseInt($(".bwslider").attr("data-slides-per-click")); //Set the number of slides to scroll per click
-	$(".bwslider").addClass("bwslider-transition-" + $(".bwslider").attr("data-slide-transition"));
 	transitionMode = $(".bwslider").attr("data-slide-transition").toLowerCase();
-	infitineScroll = $(".bwslider").attr("data-slide-infinite");
-	infitineScroll = infitineScroll.toLowerCase();
-	//Verify no undefined values
+	infitineScroll = $(".bwslider").attr("data-slide-infinite").toLowerCase();
 
+	//Set up new variables
 	var transitionSpeed = parseInt($(".bwslider").attr("data-slide-speed"));
 	var transitionDelay = parseInt($(".bwslider").attr("data-slide-delay"));
+
+	//Verify no undefined values
+
+	//Apply data to appropriate elements
+	$(".bwslider").addClass("bwslider-transition-" + transitionMode);
 	$(".bwslider-slide").css("transition-duration",transitionSpeed +"ms");
 	$(".bwslider-slide").css("transition-delay", transitionDelay +"ms");
 }
 
 function sliderTransitionSetup() {
+
+	if (infitineScroll === true) {
+
+	}
+
 	if (transitionMode === "scroll") {
 		$(document).on("mouseover", ".bwslider-next", function() {
 			forwardScroll();
@@ -42,10 +51,6 @@ function sliderTransitionSetup() {
 		$(document).on("click", ".bwslider-prev", function() {
 			prevClick();
 		});		
-	}
-
-	if (infitineScroll === true) {
-
 	}
 }
 
