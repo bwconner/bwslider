@@ -1,4 +1,5 @@
-=================================Data-Attributes=================================
+================================= Data-Attributes =================================
+
 data-slides-to-show = any numeric value
 	-This attribute determines the number of slides you want to display.
 	-If the number picked is higher than the possible number of actual slides it will cap itself at the total number of slides in the markup.
@@ -39,3 +40,20 @@ data-vertical = true/false
 	- Changes the transitions of slides to be vertical animations instead of horizontal animations.
 	- Only relevant with data-slide-transition is set to slide.
 	- Not yet implemented.
+
+================================= Mark-Up Classes =================================
+
+bwslider-controls
+	-This is the wrapper class for the elements which holes the slider controls.
+
+bwslider-next
+	-This is the class for the element that will be clicked on to move on to the next slide in the stack.
+
+bwslider-prev
+	-This is the class for the element that will be clicked on to move on to the previous slide in the stack.
+
+bwslider-forward-hover
+	-This is the class for the element that will be hovered on to move on to the next slide in the stack.
+
+bwslider-backward-hover
+	-This is the class for the element that will be hovered on to move on to the previous slide in the stack.
