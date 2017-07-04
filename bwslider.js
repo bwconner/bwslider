@@ -177,7 +177,7 @@ function prevSlide() {
 	$( ".bwslider-slide" ).each(function(index) {
 		if ((index >= firstActiveSlide) && (index < lastActiveSlide)) {
 			$(this).addClass("bwslider-active-slide");
-			$(this).css('margin-left', ((((slideWidth*activeCount)) - slideWidth * 4) * (-1)) + '%');
+			$(this).css('margin-left', ((((slideWidth*activeCount)) - slideWidth * numberOfActiveSlides) * (-1)) + '%');
 			activeCount = activeCount - 1;
 		} else {
 			$(this).removeClass("bwslider-active-slide");
