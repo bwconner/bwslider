@@ -155,7 +155,7 @@ function nextSlide() {
 			$(this).removeClass("bwslider-active-slide");
 		}
 
-		if(!$(this).hasClass("bwslider-active-slide") && $(".bwslider-next-slide").length) {
+		if(!$(this).hasClass("bwslider-active-slide") && !$(".bwslider-slide").last().hasClass("bwslider-active-slide")) {
 			var currentMargin = ($(this)[0].style.marginLeft);
 			currentMargin =  parseInt(currentMargin);
 			$(this).css('margin-left', (currentMargin - slideWidth) + '%')
@@ -188,7 +188,7 @@ function prevSlide() {
 			$(this).removeClass("bwslider-active-slide");
 		}
 
-		if(!$(this).hasClass("bwslider-active-slide") && $(".bwslider-prev-slide").length) {
+		if(!$(this).hasClass("bwslider-active-slide") && !$(".bwslider-slide").first().hasClass("bwslider-active-slide")) {
 			var currentMargin = ($(this)[0].style.marginLeft);
 			currentMargin =  parseInt(currentMargin);
 			$(this).css('margin-left', (currentMargin + slideWidth) + '%')
