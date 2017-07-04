@@ -1,3 +1,7 @@
+================================= bwslider =================================
+
+This slider is a jQuery based slider which has a breadth of options and settings in order to be as customizable as possible while allowing you to not depend on installing multiple slider plugins to achieve all of the desired effects and uses you need on your website. The goal of this slider is to be an all-in-one stop for your slider needs.
+
 ================================= Data-Attributes =================================
 
 data-slides-to-show = any numeric value
