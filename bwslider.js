@@ -16,8 +16,12 @@ function sliderDataSetup() {
 	$(".bwslider").addClass("bwslider-transition-" + $(".bwslider").attr("data-slide-transition"));
 	transitionMode = $(".bwslider").attr('data-slide-transition').toLowerCase();
 	infitineScroll = $(".bwslider").attr('data-slide-infinite');
-	infitineScroll = infitineScroll.toLowerCase();	
+	infitineScroll = infitineScroll.toLowerCase();
 	//Verify no undefined values
+	var transitionSpeed = parseInt($(".bwslider").attr('data-slide-speed'));
+	var transitionDelay = parseInt($(".bwslider").attr('data-slide-delay'));
+	$(".bwslider-slide").css('transition-duration',transitionSpeed +'ms');
+	$(".bwslider-slide").css('transition-delay', transitionDelay +'ms');
 }
 
 function sliderTransitionSetup() {

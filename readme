@@ -21,7 +21,11 @@ data-slide-transition = fade/slide/scroll/flash (only works if continuous if off
 
 data-slide-speed = numeric
 	- Determines the speed in ms for transitions and visual experience of slides/scrolls/fades etc.
-	- Not yet implemented.
+	- Default varies by transition type as defined in the css.
+
+data-slide-delay = numeric
+	- Determines the speed in ms between the user interactions and when the transition for that interactions begins.
+	- Defaults to 0.
 
 data-slide-padding = defaults to 0, percentage or pixel
 	- Defaults to 0px.
