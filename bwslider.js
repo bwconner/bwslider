@@ -2,9 +2,9 @@
 var numberOfActiveSlides = 1;
 var numberOfTotalSlides = 1;
 var slidesPerClick = 1;
-var infitineScroll = false;
 var firstActiveSlide = 0;
 var lastActiveSlide = 0;
+var infitineScroll = false;
 var transitionMode = ""; //this will be used to surround js that only needs to be called for certain transition modes
 var slideWidth = "100%";
 //var bwslider = {}
@@ -14,14 +14,15 @@ function sliderDataSetup() {
 	numberOfTotalSlides = $(".bwslider-slide").length; //Get the number of total slides
 	slidesPerClick = parseInt($(".bwslider").attr("data-slides-per-click")); //Set the number of slides to scroll per click
 	$(".bwslider").addClass("bwslider-transition-" + $(".bwslider").attr("data-slide-transition"));
-	transitionMode = $(".bwslider").attr('data-slide-transition').toLowerCase();
-	infitineScroll = $(".bwslider").attr('data-slide-infinite');
+	transitionMode = $(".bwslider").attr("data-slide-transition").toLowerCase();
+	infitineScroll = $(".bwslider").attr("data-slide-infinite");
 	infitineScroll = infitineScroll.toLowerCase();
 	//Verify no undefined values
-	var transitionSpeed = parseInt($(".bwslider").attr('data-slide-speed'));
-	var transitionDelay = parseInt($(".bwslider").attr('data-slide-delay'));
-	$(".bwslider-slide").css('transition-duration',transitionSpeed +'ms');
-	$(".bwslider-slide").css('transition-delay', transitionDelay +'ms');
+
+	var transitionSpeed = parseInt($(".bwslider").attr("data-slide-speed"));
+	var transitionDelay = parseInt($(".bwslider").attr("data-slide-delay"));
+	$(".bwslider-slide").css("transition-duration",transitionSpeed +"ms");
+	$(".bwslider-slide").css("transition-delay", transitionDelay +"ms");
 }
 
 function sliderTransitionSetup() {
@@ -60,7 +61,7 @@ function numberOfSlidesToDisplay() {
 	$(".bwslider-slide").css("width", slideWidth + "%");
 
 	$( ".bwslider-slide" ).each(function(index) {
-		$(this).attr('data-slide-index', index);
+		$(this).attr("data-slide-index", index);
 		if (index < numberOfActiveSlides) {
 			$(this).addClass("bwslider-active-slide");
 		}
@@ -75,17 +76,17 @@ function numberOfSlidesToDisplay() {
 
 		//Line up all of the slides for slide scroll
 		if (transitionMode === "slide") {
-			$(this).css('margin-left', (slideWidth * index) + '%');
+			$(this).css("margin-left", (slideWidth * index) + "%");
 		}
 
 		//For Fade or Flash mode, appropriately place background slides with correct margins
 		if ((transitionMode !== "slide") && index % numberOfActiveSlides !== 0) {
-			$(this).css('margin-left', slideWidth * (index % numberOfActiveSlides) + '%');
+			$(this).css("margin-left", slideWidth * (index % numberOfActiveSlides) + "%");
 		}
 	});
 
 	var sliderHeight = $(".bwslider-active-slide img").height();
-	$(".bwslider").css('height', sliderHeight);
+	$(".bwslider").css("height", sliderHeight);
 }
 
 
@@ -148,7 +149,7 @@ function nextSlide() {
 	$( ".bwslider-slide" ).each(function(index) {
 		if ((index >= firstActiveSlide) && (index < lastActiveSlide)) {
 			$(this).addClass("bwslider-active-slide");
-			$(this).css('margin-left', ((slideWidth*activeCount)-slideWidth) + '%');
+			$(this).css("margin-left", ((slideWidth*activeCount)-slideWidth) + "%");
 			activeCount++;
 		} else {
 			$(this).removeClass("bwslider-active-slide");
@@ -157,17 +158,17 @@ function nextSlide() {
 		if(!$(this).hasClass("bwslider-active-slide") && !$(".bwslider-slide").last().hasClass("bwslider-active-slide")) {
 			var currentMargin = ($(this)[0].style.marginLeft);
 			currentMargin =  parseInt(currentMargin);
-			$(this).css('margin-left', (currentMargin - slideWidth) + '%')
+			$(this).css("margin-left", (currentMargin - slideWidth) + "%")
 		}
 
 		if (index === (firstActiveSlide - 1)) {
 			//$(".bwslider-slide").removeClass("bwslider-prev-slide");
 			//$(this).addClass("bwslider-prev-slide");
-			$(this).css('margin-left','-' + slideWidth + '%');
+			$(this).css("margin-left","-" + slideWidth + "%");
 		} else if (index === (lastActiveSlide)) {
 			//$(".bwslider-slide").removeClass("bwslider-next-slide");
 			//$(this).addClass("bwslider-next-slide");
-			$(this).css('margin-left', '100%');
+			$(this).css("margin-left", "100%");
 		}
 
 	});
@@ -181,7 +182,7 @@ function prevSlide() {
 	$( ".bwslider-slide" ).each(function(index) {
 		if ((index >= firstActiveSlide) && (index < lastActiveSlide)) {
 			$(this).addClass("bwslider-active-slide");
-			$(this).css('margin-left', ((((slideWidth*activeCount)) - slideWidth * numberOfActiveSlides) * (-1)) + '%');
+			$(this).css("margin-left", ((((slideWidth*activeCount)) - slideWidth * numberOfActiveSlides) * (-1)) + "%");
 			activeCount = activeCount - 1;
 		} else {
 			$(this).removeClass("bwslider-active-slide");
@@ -190,17 +191,17 @@ function prevSlide() {
 		if(!$(this).hasClass("bwslider-active-slide") && !$(".bwslider-slide").first().hasClass("bwslider-active-slide")) {
 			var currentMargin = ($(this)[0].style.marginLeft);
 			currentMargin =  parseInt(currentMargin);
-			$(this).css('margin-left', (currentMargin + slideWidth) + '%')
+			$(this).css("margin-left", (currentMargin + slideWidth) + "%")
 		}
 
 		if (index === (firstActiveSlide - 1)) {
 			//$(".bwslider-slide").removeClass("bwslider-prev-slide");
 			//$(this).addClass("bwslider-prev-slide");
-			$(this).css('margin-left','-' + slideWidth + '%');
+			$(this).css("margin-left","-" + slideWidth + "%");
 		} else if (index === (lastActiveSlide)) {
 			//$(".bwslider-slide").removeClass("bwslider-next-slide");
 			//$(this).addClass("bwslider-next-slide");
-			$(this).css('margin-left', '100%');
+			$(this).css("margin-left", "100%");
 		}
 	});
 }
@@ -258,7 +259,7 @@ function bwsliderInit() {
 
 	$(window).resize(function() {
 		var sliderHeight = $(".bwslider-active-slide img").height();
-		$(".bwslider").css('height', sliderHeight);
+		$(".bwslider").css("height", sliderHeight);
 	});
 }
 
