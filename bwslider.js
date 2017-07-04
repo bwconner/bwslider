@@ -77,7 +77,7 @@ function numberOfSlidesToDisplay() {
 		if (index === lastActiveSlide) {
 			$(this).addClass("bwslider-next-slide");
 			if (transitionMode === "slide") {
-				$(".bwslider-next-slide").css('margin-left', '100%');
+				$(this).css('margin-left', '100%');
 			}
 		}
 
@@ -161,7 +161,7 @@ function nextSlide() {
 		} else if (index === (lastActiveSlide)) {
 			$(".bwslider-slide").removeClass("bwslider-next-slide");
 			$(this).addClass("bwslider-next-slide");
-			$(".bwslider-next-slide").css('margin-left', '100%');
+			$(this).css('margin-left', '100%');
 		}
 	});
 }
@@ -187,7 +187,7 @@ function prevSlide() {
 		} else if (index === (lastActiveSlide)) {
 			$(".bwslider-slide").removeClass("bwslider-next-slide");
 			$(this).addClass("bwslider-next-slide");
-			$(".bwslider-next-slide").css('margin-left', '100%');
+			$(this).css('margin-left', '100%');
 		}
 	});
 }
