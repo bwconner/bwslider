@@ -1,4 +1,3 @@
-
 //Public Members
 var numberOfActiveSlides = 1;
 var numberOfTotalSlides = 1;
@@ -69,20 +68,19 @@ function numberOfSlidesToDisplay() {
 
 		if (index === firstActiveSlide - 1) {
 			$(this).addClass("bwslider-prev-slide");
-			if (transitionMode === "slide") {
-				$(".bwslider-prev-slide").css('margin-left','-' + slideWidth + '%');
-			}
 		}
 
 		if (index === lastActiveSlide) {
 			$(this).addClass("bwslider-next-slide");
-			if (transitionMode === "slide") {
-				$(".bwslider-next-slide").css('margin-left', '100%');
-			}
+		}
+
+		//Line up all of the slides for slide scroll
+		if (transitionMode === "slide") {
+			$(this).css('margin-left', (slideWidth * index) + '%');
 		}
 
 		//For Fade or Flash mode, appropriately place background slides with correct margins
-		if (index % numberOfActiveSlides !== 0) {
+		if ((transitionMode !== "slide") && index % numberOfActiveSlides !== 0) {
 			$(this).css('margin-left', slideWidth * (index % numberOfActiveSlides) + '%');
 		}
 	});
@@ -157,6 +155,12 @@ function nextSlide() {
 			$(this).removeClass("bwslider-active-slide");
 		}
 
+		if(!$(this).hasClass("bwslider-active-slide") && $(".bwslider-next-slide").length) {
+			var currentMargin = ($(this).css('margin-left'));
+			currentMargin =  parseInt(currentMargin);
+			$(this).css('margin-left', (currentMargin - slideWidth) + '%')
+		}
+
 		if (index === (firstActiveSlide - 1)) {
 			$(".bwslider-slide").removeClass("bwslider-prev-slide");
 			$(this).addClass("bwslider-prev-slide");
@@ -166,6 +170,7 @@ function nextSlide() {
 			$(this).addClass("bwslider-next-slide");
 			$(".bwslider-next-slide").css('margin-left', '100%');
 		}
+
 	});
 }
 
@@ -181,6 +186,12 @@ function prevSlide() {
 			activeCount = activeCount - 1;
 		} else {
 			$(this).removeClass("bwslider-active-slide");
+		}
+
+		if(!$(this).hasClass("bwslider-active-slide") && $(".bwslider-prev-slide").length) {
+			var currentMargin = ($(this).css('margin-left'));
+			currentMargin =  parseInt(currentMargin);
+			$(this).css('margin-left', (currentMargin + slideWidth) + '%')
 		}
 
 		if (index === (firstActiveSlide - 1)) {
