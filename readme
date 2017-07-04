@@ -1,0 +1,41 @@
+=================================Data-Attributes=================================
+data-slides-to-show = any numeric value
+	-This attribute determines the number of slides you want to display.
+	-If the number picked is higher than the possible number of actual slides it will cap itself at the total number of slides in the markup.
+
+data-slides-per-click = any numeric value
+	- Detemines the number of slides to scroll through when the slider navigation is kicked.
+	- This is relevant for all modes besides continous Scroll mode.
+
+data-slide-transition = fade/slide/scroll/flash (only works if continuous if off)
+	- Determines the style of transition between slides.
+	- Fade mode will fade out the slide to fade another in in its place.
+	- Slide mode will slide the images left or right with each click.
+	- Flash mode, similar to fade mode but with a different UX visual experience.
+	- Scroll mode, as the user hovers over the hot spot the slider will scroll the slides in that direction revealing more slides as time continues. Not yet implemented.
+
+data-slide-speed = numeric
+	- Determines the speed in ms for transitions and visual experience of slides/scrolls/fades etc.
+	- Not yet implemented.
+
+data-slide-padding = defaults to 0, percentage or pixel
+	- Defaults to 0px.
+	- Any value entered in here will be made inline css padding around the elements within each slides.
+	- Not yet implemented.
+
+data-continuous = true/false
+	- Defaults to false.
+	- Setting this to True will enable Continous Smooth Scroll mode. 
+	- Hovering over hot spots will scroll the slides in the chosen direction.
+	- Not yet implemented.
+
+data-infinite = true/false
+	- Defaults to false.
+	- Setting this to True will allow a user to endless scroll through the slider as it repeats itself endlessly.
+	- Not yet implemented.
+
+data-vertical = true/false
+	- Defaults to false.
+	- Changes the transitions of slides to be vertical animations instead of horizontal animations.
+	- Only relevant with data-slide-transition is set to slide.
+	- Not yet implemented.
