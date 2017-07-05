@@ -152,6 +152,7 @@ function prevClick() {
 function nextSlide() {
 	var activeCount = 1;
 	$( ".bwslider-slide" ).each(function(index) {
+		//Set the margins for the active slides
 		if ((index >= firstActiveSlide) && (index < lastActiveSlide)) {
 			$(this).addClass("bwslider-active-slide");
 			$(this).css("margin-left", ((slideWidth*activeCount)-slideWidth) + "%");
@@ -160,12 +161,14 @@ function nextSlide() {
 			$(this).removeClass("bwslider-active-slide");
 		}
 
+		//Set the margins for the non active slides
 		if(!$(this).hasClass("bwslider-active-slide") && !$(".bwslider-slide").last().hasClass("bwslider-active-slide")) {
 			var currentMargin = ($(this)[0].style.marginLeft);
 			currentMargin =  parseInt(currentMargin);
-			$(this).css("margin-left", (currentMargin - slideWidth) + "%")
+			$(this).css("margin-left", (currentMargin - slideWidth) + "%");
 		}
 
+		//Make sure the prev and next slide are completely out of view and no fractional math is causing any issues
 		if (index === (firstActiveSlide - 1)) {
 			//$(".bwslider-slide").removeClass("bwslider-prev-slide");
 			//$(this).addClass("bwslider-prev-slide");
@@ -185,6 +188,7 @@ function prevSlide() {
 	//$(".bwslider-slide").removeClass("bwslider-next-slide");
 	var activeCount = numberOfActiveSlides;
 	$( ".bwslider-slide" ).each(function(index) {
+		//Set the margins for the active slides
 		if ((index >= firstActiveSlide) && (index < lastActiveSlide)) {
 			$(this).addClass("bwslider-active-slide");
 			$(this).css("margin-left", ((((slideWidth*activeCount)) - slideWidth * numberOfActiveSlides) * (-1)) + "%");
@@ -193,12 +197,14 @@ function prevSlide() {
 			$(this).removeClass("bwslider-active-slide");
 		}
 
+		//Set the margins for the non active slides
 		if(!$(this).hasClass("bwslider-active-slide") && !$(".bwslider-slide").first().hasClass("bwslider-active-slide")) {
 			var currentMargin = ($(this)[0].style.marginLeft);
 			currentMargin =  parseInt(currentMargin);
-			$(this).css("margin-left", (currentMargin + slideWidth) + "%")
+			$(this).css("margin-left", (currentMargin + slideWidth) + "%");
 		}
 
+		//Make sure the prev and next slide are completely out of view and no fractional math is causing any issues
 		if (index === (firstActiveSlide - 1)) {
 			//$(".bwslider-slide").removeClass("bwslider-prev-slide");
 			//$(this).addClass("bwslider-prev-slide");
