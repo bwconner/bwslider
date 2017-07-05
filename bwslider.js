@@ -151,6 +151,12 @@ function prevClick() {
 
 function nextSlide() {
 	var activeCount = 1;
+
+	//If already at end of the slides return out of this function with going further
+	if ($(".bwslider-slide").last().hasClass("bwslider-active-slide")) {
+		return;
+	}
+
 	$( ".bwslider-slide" ).each(function(index) {
 		//Set the margins for the active slides
 		if ((index >= firstActiveSlide) && (index < lastActiveSlide)) {
@@ -162,10 +168,13 @@ function nextSlide() {
 		}
 
 		//Set the margins for the non active slides
-		if(!$(this).hasClass("bwslider-active-slide") && !$(".bwslider-slide").last().hasClass("bwslider-active-slide")) {
+		if(!$(this).hasClass("bwslider-active-slide")) {
 			var currentMargin = ($(this)[0].style.marginLeft);
 			currentMargin =  parseInt(currentMargin);
+			console.log("index:" + index);
+			console.log("margin before math:" + currentMargin);
 			$(this).css("margin-left", (currentMargin - slideWidth) + "%");
+			console.log("margin after math:" + currentMargin);
 		}
 
 		//Make sure the prev and next slide are completely out of view and no fractional math is causing any issues
@@ -187,6 +196,12 @@ function prevSlide() {
 	//$(".bwslider-slide").removeClass("bwslider-prev-slide");
 	//$(".bwslider-slide").removeClass("bwslider-next-slide");
 	var activeCount = numberOfActiveSlides;
+
+	//If already at beginning of the slides return out of this function with going further
+	if ($(".bwslider-slide").first().hasClass("bwslider-active-slide")) {
+		return;
+	}
+
 	$( ".bwslider-slide" ).each(function(index) {
 		//Set the margins for the active slides
 		if ((index >= firstActiveSlide) && (index < lastActiveSlide)) {
@@ -198,10 +213,13 @@ function prevSlide() {
 		}
 
 		//Set the margins for the non active slides
-		if(!$(this).hasClass("bwslider-active-slide") && !$(".bwslider-slide").first().hasClass("bwslider-active-slide")) {
+		if(!$(this).hasClass("bwslider-active-slide")) {
 			var currentMargin = ($(this)[0].style.marginLeft);
 			currentMargin =  parseInt(currentMargin);
+			console.log("index:" + index);
+			console.log("margin before math:" + currentMargin);
 			$(this).css("margin-left", (currentMargin + slideWidth) + "%");
+			console.log("margin after math:" + currentMargin);
 		}
 
 		//Make sure the prev and next slide are completely out of view and no fractional math is causing any issues
