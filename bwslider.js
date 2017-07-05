@@ -313,8 +313,13 @@ function backwardsScroll() {
 function bwsliderInit() {
 	sliderDataSetup();
 	sliderTransitionSetup();
-	displayInitialSlides();
-	//displayInitialInifiniteSlides();
+
+	if (infitineScroll === "true") {
+		displayInitialInfiniteSlides();
+	} else {
+		displayInitialSlides();
+	}
+
 	$(window).resize(function() {
 		var sliderHeight = $(".bwslider-active-slide img").height();
 		$(".bwslider").css("height", sliderHeight);
