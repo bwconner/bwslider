@@ -31,8 +31,11 @@ function sliderDataSetup() {
 
 function sliderTransitionSetup() {
 
-	if (infitineScroll === true) {
-
+	if (infitineScroll === "true") {
+		var clonedSlides = $(".bwslider-stack").clone();
+		$(".bwslider-stack").addClass(".current-slide-stack")
+		$(clonedSlides).insertBefore(".bwslider-stack");
+		$(clonedSlides).insertAfter(".bwslider-stack");
 	}
 
 	if (transitionMode === "scroll") {
@@ -94,6 +97,39 @@ function numberOfSlidesToDisplay() {
 	$(".bwslider").css("height", sliderHeight);
 }
 
+function numberOfInfiniteSlidesToDisplay {
+	//Cap the number of active slides by the number of total slides
+	if (numberOfActiveSlides > numberOfTotalSlides) {
+		numberOfActiveSlides = numberOfTotalSlides;
+	}
+
+	lastActiveSlide = numberOfActiveSlides;
+
+	slideWidth = 100/numberOfActiveSlides;
+	$(".bwslider-slide").css("width", slideWidth + "%");
+
+	$( ".bwslider-slide" ).each(function(index) {
+		$(this).attr("data-slide-index", index);
+		console.log((index + numberOfTotalSlides < numberOfActiveSlides + numberOfTotalSlides));
+		if ((index < numberOfActiveSlides + numberOfTotalSlides) && (index >= numberOfTotalSlides) && (infitineScroll === "true")) {
+			//Infinite is true so set the middle stack slides as active
+			$(this).addClass("bwslider-active-slide");
+		}
+
+		//Line up all of the slides for slide scroll
+		if (transitionMode === "slide") {
+			$(this).css("margin-left", (slideWidth * index) + "%");
+		}
+
+		//For Fade or Flash mode, appropriately place background slides with correct margins
+		if ((transitionMode !== "slide") && index % numberOfActiveSlides !== 0) {
+			$(this).css("margin-left", slideWidth * (index % numberOfActiveSlides) + "%");
+		}
+	});
+
+	var sliderHeight = $(".bwslider-active-slide img").height();
+	$(".bwslider").css("height", sliderHeight);
+}
 
 function incrementSlider() {
 	firstActiveSlide = firstActiveSlide + slidesPerClick;
