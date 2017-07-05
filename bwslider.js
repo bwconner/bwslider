@@ -57,7 +57,7 @@ function sliderTransitionSetup() {
 	}
 }
 
-function numberOfSlidesToDisplay() {
+function displayInitialSlides() {
 	//Cap the number of active slides by the number of total slides
 	if (numberOfActiveSlides > numberOfTotalSlides) {
 		numberOfActiveSlides = numberOfTotalSlides;
@@ -97,7 +97,7 @@ function numberOfSlidesToDisplay() {
 	$(".bwslider").css("height", sliderHeight);
 }
 
-function numberOfInfiniteSlidesToDisplay {
+function displayInitialInfiniteSlides() {
 	//Cap the number of active slides by the number of total slides
 	if (numberOfActiveSlides > numberOfTotalSlides) {
 		numberOfActiveSlides = numberOfTotalSlides;
@@ -320,8 +320,8 @@ function backwardsScroll() {
 function bwsliderInit() {
 	sliderDataSetup();
 	sliderTransitionSetup();
-	numberOfSlidesToDisplay();
-
+	displayInitialSlides();
+	//displayInitialInifiniteSlides();
 	$(window).resize(function() {
 		var sliderHeight = $(".bwslider-active-slide img").height();
 		$(".bwslider").css("height", sliderHeight);
