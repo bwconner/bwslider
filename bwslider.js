@@ -110,7 +110,6 @@ function displayInitialInfiniteSlides() {
 
 	$( ".bwslider-slide" ).each(function(index) {
 		$(this).attr("data-slide-index", index);
-		console.log((index + numberOfTotalSlides < numberOfActiveSlides + numberOfTotalSlides));
 		if ((index < numberOfActiveSlides + numberOfTotalSlides) && (index >= numberOfTotalSlides) && (infitineScroll === "true")) {
 			//Infinite is true so set the middle stack slides as active
 			$(this).addClass("bwslider-active-slide");
@@ -207,10 +206,7 @@ function nextSlide() {
 		if(!$(this).hasClass("bwslider-active-slide")) {
 			var currentMargin = ($(this)[0].style.marginLeft);
 			currentMargin =  parseInt(currentMargin);
-			console.log("index:" + index);
-			console.log("margin before math:" + currentMargin);
 			$(this).css("margin-left", (currentMargin - slideWidth) + "%");
-			console.log("margin after math:" + currentMargin);
 		}
 
 		//Make sure the prev and next slide are completely out of view and no fractional math is causing any issues
@@ -252,10 +248,7 @@ function prevSlide() {
 		if(!$(this).hasClass("bwslider-active-slide")) {
 			var currentMargin = ($(this)[0].style.marginLeft);
 			currentMargin =  parseInt(currentMargin);
-			console.log("index:" + index);
-			console.log("margin before math:" + currentMargin);
 			$(this).css("margin-left", (currentMargin + slideWidth) + "%");
-			console.log("margin after math:" + currentMargin);
 		}
 
 		//Make sure the prev and next slide are completely out of view and no fractional math is causing any issues
