@@ -7,13 +7,13 @@ var infitineScroll = false;
 var firstActiveSlide = 0;
 var lastActiveSlide = 0;
 var slideWidth = "100%";
-//var bwslider = {}
 
 if (infitineScroll === "true") {
 	var clonedNextStack;
 	var clonedPrevStack;
 }
 
+//var bwslider = {}
 function sliderDataSetup() {
 	//Pull in values for global variables
 	numberOfActiveSlides = parseInt($(".bwslider").attr("data-slides-to-show")); //Get the number of slides to show from the data attr
@@ -134,7 +134,7 @@ function displayInitialInfiniteSlides() {
 	});
 
 	clonedNextStack = $(".bwslider-stack.next-slide-stack").clone();
-	clonedPrevStack = $(".bwslider-stack.prev-slide-stack").clone();
+	clonedPrevStack = $(".bwslider-stack.prev-slide-stack").clone();	
 
 	var sliderHeight = $(".bwslider-active-slide img").height();
 	$(".bwslider").css("height", sliderHeight);
