@@ -41,8 +41,8 @@ function sliderTransitionSetup() {
 		$(".bwslider-stack").addClass("current-slide-stack")
 		$(clonedSlides).insertBefore(".bwslider-stack");
 		$(clonedSlides).insertAfter(".bwslider-stack");
-		$('.bwslider-stack:nth-child(1)').addClass("prev-slide-stack");
-		$('.bwslider-stack:nth-child(3)').addClass("next-slide-stack");
+		$(".bwslider-stack:nth-child(1)").addClass("prev-slide-stack");
+		$(".bwslider-stack:nth-child(3)").addClass("next-slide-stack");
 	}
 
 	if (transitionMode === "scroll") {
