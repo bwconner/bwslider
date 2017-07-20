@@ -9,6 +9,11 @@ var lastActiveSlide = 0;
 var slideWidth = "100%";
 //var bwslider = {}
 
+if (infitineScroll === "true") {
+	var clonedNextStack;
+	var clonedPrevStack;
+}
+
 function sliderDataSetup() {
 	//Pull in values for global variables
 	numberOfActiveSlides = parseInt($(".bwslider").attr("data-slides-to-show")); //Get the number of slides to show from the data attr
@@ -128,6 +133,9 @@ function displayInitialInfiniteSlides() {
 		}
 	});
 
+	clonedNextStack = $(".bwslider-stack.next-slide-stack").clone();
+	clonedPrevStack = $(".bwslider-stack.prev-slide-stack").clone();
+
 	var sliderHeight = $(".bwslider-active-slide img").height();
 	$(".bwslider").css("height", sliderHeight);
 }
@@ -187,6 +195,9 @@ function nextClick() {
 		$(".next-slide-stack").addClass("current-slide-stack");
 		$(".current-slide-stack").removeClass("next-slide-stack");
 		$(cloneSlideStack).insertAfter(".current-slide-stack");
+
+		//Remove active slides in new next stack
+		$(".next-slide-stack .bwslider-active-slide").removeClass("bwslider-active-slide");
 	}
 }
 
@@ -214,6 +225,9 @@ function prevClick() {
 		$(".prev-slide-stack").addClass("current-slide-stack");
 		$(".current-slide-stack").removeClass("prev-slide-stack");
 		$(cloneSlideStack).insertBefore(".current-slide-stack");
+
+		//Remove active slides in new prev stack
+		$(".prev-slide-stack .bwslider-active-slide").removeClass("bwslider-active-slide");
 	}
 }
 
