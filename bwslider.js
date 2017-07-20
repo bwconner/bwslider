@@ -117,7 +117,7 @@ function displayInitialInfiniteSlides() {
 
 		//Line up all of the slides for slide scroll
 		if (transitionMode === "slide") {
-			$(this).css("margin-left", (slideWidth * index) + "%");
+			$(this).css("margin-left", ((slideWidth * index) - (slideWidth * numberOfTotalSlides)) + "%");
 		}
 
 		//For Fade or Flash mode, appropriately place background slides with correct margins
@@ -133,12 +133,13 @@ function displayInitialInfiniteSlides() {
 function incrementSlider() {
 	firstActiveSlide = firstActiveSlide + slidesPerClick;
 	lastActiveSlide = lastActiveSlide + slidesPerClick;
-	if (firstActiveSlide < 0) {
+
+	if (firstActiveSlide < 0 && !infitineScroll) {
 		firstActiveSlide = 0;
 		lastActiveSlide = numberOfActiveSlides;
 	}
 
-	if (lastActiveSlide > numberOfTotalSlides) {
+	if (lastActiveSlide > numberOfTotalSlides && !infitineScroll) {
 		firstActiveSlide = numberOfTotalSlides - numberOfActiveSlides;
 		lastActiveSlide = numberOfTotalSlides;
 	}
@@ -149,12 +150,12 @@ function decrementSlider() {
 	firstActiveSlide = firstActiveSlide - slidesPerClick;
 	lastActiveSlide = lastActiveSlide - slidesPerClick;
 
-	if (firstActiveSlide < 0) {
+	if (firstActiveSlide < 0 && !infitineScroll) {
 		firstActiveSlide = 0;
 		lastActiveSlide = numberOfActiveSlides;
 	}
 
-	if (lastActiveSlide > numberOfTotalSlides) {
+	if (lastActiveSlide > numberOfTotalSlides && !infitineScroll) {
 		firstActiveSlide = numberOfTotalSlides - numberOfActiveSlides;
 		lastActiveSlide = numberOfTotalSlides;
 	}
@@ -186,6 +187,11 @@ function prevClick() {
 
 function nextSlide() {
 	var activeCount = 1;
+	var infiniteOffset = 0;
+
+	if (infitineScroll) {
+		infiniteOffset = numberOfTotalSlides;
+	}
 
 	//If already at end of the slides return out of this function with going further
 	if ($(".bwslider-slide").last().hasClass("bwslider-active-slide")) {
@@ -194,7 +200,8 @@ function nextSlide() {
 
 	$( ".bwslider-slide" ).each(function(index) {
 		//Set the margins for the active slides
-		if ((index >= firstActiveSlide) && (index < lastActiveSlide)) {
+
+		if ((index >= firstActiveSlide + infiniteOffset) && (index < lastActiveSlide + infiniteOffset)) {
 			$(this).addClass("bwslider-active-slide");
 			$(this).css("margin-left", ((slideWidth*activeCount)-slideWidth) + "%");
 			activeCount++;
@@ -228,6 +235,11 @@ function prevSlide() {
 	//$(".bwslider-slide").removeClass("bwslider-prev-slide");
 	//$(".bwslider-slide").removeClass("bwslider-next-slide");
 	var activeCount = numberOfActiveSlides;
+	var infiniteOffset = 0;
+
+	if (infitineScroll) {
+		infiniteOffset = numberOfTotalSlides;
+	}
 
 	//If already at beginning of the slides return out of this function with going further
 	if ($(".bwslider-slide").first().hasClass("bwslider-active-slide")) {
@@ -236,7 +248,7 @@ function prevSlide() {
 
 	$( ".bwslider-slide" ).each(function(index) {
 		//Set the margins for the active slides
-		if ((index >= firstActiveSlide) && (index < lastActiveSlide)) {
+		if ((index >= firstActiveSlide + infiniteOffset) && (index < lastActiveSlide + infiniteOffset)) {
 			$(this).addClass("bwslider-active-slide");
 			$(this).css("margin-left", ((((slideWidth*activeCount)) - slideWidth * numberOfActiveSlides) * (-1)) + "%");
 			activeCount = activeCount - 1;
