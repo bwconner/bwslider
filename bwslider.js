@@ -33,9 +33,11 @@ function sliderTransitionSetup() {
 
 	if (infitineScroll === "true") {
 		var clonedSlides = $(".bwslider-stack").clone();
-		$(".bwslider-stack").addClass(".current-slide-stack")
+		$(".bwslider-stack").addClass("current-slide-stack")
 		$(clonedSlides).insertBefore(".bwslider-stack");
 		$(clonedSlides).insertAfter(".bwslider-stack");
+		$('.bwslider-stack:nth-child(1)').addClass("prev-slide-stack");
+		$('.bwslider-stack:nth-child(3)').addClass("next-slide-stack");
 	}
 
 	if (transitionMode === "scroll") {
@@ -171,6 +173,21 @@ function nextClick() {
 	} else {
 		nextFade();
 	}
+
+	if (infitineScroll && $(".current-slide-stack .bwslider-active-slide").length == 0) {
+		//Remove previous slide stack and make old current slide stack the new previous
+		$(".prev-slide-stack").remove();
+		$(".current-slide-stack").addClass("prev-slide-stack");
+
+		//Clone the next stack of slides
+		var cloneSlideStack = $(".next-slide-stack").clone();
+
+		//Remove the current and next stack classes and insert the next slide stack
+		$(".current-slide-stack").removeClass("current-slide-stack");
+		$(".next-slide-stack").addClass("current-slide-stack");
+		$(".current-slide-stack").removeClass("next-slide-stack");
+		$(cloneSlideStack).insertAfter(".current-slide-stack");
+	}
 }
 
 function prevClick() {
@@ -182,6 +199,21 @@ function prevClick() {
 		prevSlide();
 	} else {
 		prevFade();
+	}
+
+	if (infitineScroll && $(".current-slide-stack .bwslider-active-slide").length == 0) {
+		//Remove next slide stack and make old current slide stack the new previous
+		$(".next-slide-stack").remove();
+		$(".current-slide-stack").addClass("next-slide-stack");
+
+		//Clone the prev stack of slides
+		var cloneSlideStack = $(".prev-slide-stack").clone();
+
+		//Remove the current and prev stack classes and insert the next slide stack
+		$(".current-slide-stack").removeClass("current-slide-stack");
+		$(".prev-slide-stack").addClass("current-slide-stack");
+		$(".current-slide-stack").removeClass("prev-slide-stack");
+		$(cloneSlideStack).insertBefore(".current-slide-stack");
 	}
 }
 
