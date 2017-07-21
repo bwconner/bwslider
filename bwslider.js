@@ -174,8 +174,6 @@ function decrementSlider() {
 
 function nextClick() {
 	incrementSlider();
-	//$(".bwslider-slide").removeClass("bwslider-prev-slide");
-	//$(".bwslider-slide").removeClass("bwslider-next-slide");
 
 	if (transitionMode === "slide") {
 		nextSlide();
@@ -207,8 +205,6 @@ function nextClick() {
 
 function prevClick() {
 	decrementSlider();
-	//$(".bwslider-slide").removeClass("bwslider-prev-slide");
-	//$(".bwslider-slide").removeClass("bwslider-next-slide");
 
 	if (transitionMode === "slide") {
 		prevSlide();
@@ -268,12 +264,8 @@ function nextSlide() {
 
 		//Make sure the prev and next slide are completely out of view and no fractional math is causing any issues
 		if (index === (firstActiveSlide - 1)) {
-			//$(".bwslider-slide").removeClass("bwslider-prev-slide");
-			//$(this).addClass("bwslider-prev-slide");
 			$(this).css("margin-left","-" + slideWidth + "%");
 		} else if (index === (lastActiveSlide)) {
-			//$(".bwslider-slide").removeClass("bwslider-next-slide");
-			//$(this).addClass("bwslider-next-slide");
 			$(this).css("margin-left", "100%");
 		}
 
@@ -282,8 +274,6 @@ function nextSlide() {
 
 
 function prevSlide() {
-	//$(".bwslider-slide").removeClass("bwslider-prev-slide");
-	//$(".bwslider-slide").removeClass("bwslider-next-slide");
 	var activeCount = numberOfActiveSlides;
 	var infiniteOffset = 0;
 
@@ -315,33 +305,19 @@ function prevSlide() {
 
 		//Make sure the prev and next slide are completely out of view and no fractional math is causing any issues
 		if (index === (firstActiveSlide - 1)) {
-			//$(".bwslider-slide").removeClass("bwslider-prev-slide");
-			//$(this).addClass("bwslider-prev-slide");
 			$(this).css("margin-left","-" + slideWidth + "%");
 		} else if (index === (lastActiveSlide)) {
-			//$(".bwslider-slide").removeClass("bwslider-next-slide");
-			//$(this).addClass("bwslider-next-slide");
 			$(this).css("margin-left", "100%");
 		}
 	});
 }
 
 function nextFade() {
-	//$(".bwslider-slide").removeClass("bwslider-prev-slide");
-	//$(".bwslider-slide").removeClass("bwslider-next-slide");
 	$( ".bwslider-slide" ).each(function(index) {
 		if ((index >= firstActiveSlide) && (index < lastActiveSlide)) {
 			$(this).addClass("bwslider-active-slide");
 		} else {
 			$(this).removeClass("bwslider-active-slide");
-		}
-
-		if (index === (firstActiveSlide - 1)) {
-			//$(".bwslider-slide").removeClass("bwslider-prev-slide");
-			//$(this).addClass("bwslider-prev-slide");
-		} else if (index === (lastActiveSlide)) {
-			//$(".bwslider-slide").removeClass("bwslider-next-slide");
-			//$(this).addClass("bwslider-next-slide");
 		}
 	});
 }
@@ -352,14 +328,6 @@ function prevFade() {
 			$(this).addClass("bwslider-active-slide");
 		} else {
 			$(this).removeClass("bwslider-active-slide");
-		}
-
-		if (index === (firstActiveSlide - 1)) {
-			//$(".bwslider-slide").removeClass("bwslider-prev-slide");
-			//$(this).addClass("bwslider-prev-slide");
-		} else if (index === (lastActiveSlide)) {
-			//$(".bwslider-slide").removeClass("bwslider-next-slide");
-			//$(this).addClass("bwslider-next-slide");
 		}
 	});
 }
