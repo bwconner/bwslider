@@ -7,6 +7,7 @@ var infitineScroll = false;
 var firstActiveSlide = 0;
 var lastActiveSlide = 0;
 var slideWidth = "100%";
+var slidesLeftInStack = 1;
 
 if (infitineScroll === "true") {
 	var clonedNextStack;
@@ -18,6 +19,7 @@ function sliderDataSetup() {
 	//Pull in values for global variables
 	numberOfActiveSlides = parseInt($(".bwslider").attr("data-slides-to-show")); //Get the number of slides to show from the data attr
 	numberOfTotalSlides = $(".bwslider-slide").length; //Get the number of total slides
+	slidesLeftInStack = numberOfTotalSlides;
 	slidesPerClick = parseInt($(".bwslider").attr("data-slides-per-click")); //Set the number of slides to scroll per click
 	transitionMode = $(".bwslider").attr("data-slide-transition").toLowerCase();
 	infitineScroll = $(".bwslider").attr("data-slide-infinite").toLowerCase();
@@ -35,7 +37,6 @@ function sliderDataSetup() {
 }
 
 function sliderTransitionSetup() {
-
 	if (infitineScroll === "true") {
 		var clonedSlides = $(".bwslider-stack").clone();
 		$(".bwslider-stack").addClass("current-slide-stack")
@@ -182,7 +183,10 @@ function nextClick() {
 		nextFade();
 	}
 
-	if (infitineScroll && $(".current-slide-stack .bwslider-active-slide").length == 0) {
+	slidesLeftInStack = slidesLeftInStack - 1;
+	console.log(slidesLeftInStack);
+	if (infitineScroll && slidesLeftInStack == 0) {
+		slidesLeftInStack = numberOfTotalSlides;
 		//Remove previous slide stack and make old current slide stack the new previous
 		$(".prev-slide-stack").remove();
 		$(".current-slide-stack").addClass("prev-slide-stack");
