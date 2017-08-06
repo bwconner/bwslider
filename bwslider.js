@@ -344,8 +344,8 @@ function backwardsScroll() {
 }
 
 function sliderPaddingSetup() {
-	var newSlideHeight = $(".bwslider-slide img").height() - slidePadding;
-	var newSlideWidth = $(".bwslider-slide img").width() - slidePadding;
+	var newSlideHeight = $(".bwslider-slide img").height() - slidePadding * 2;
+	var newSlideWidth = $(".bwslider-slide img").width() - slidePadding * 2;
 	
 	$(".bwslider-slide img").css("margin", slidePadding);
 	$(".bwslider-slide img").css("height", newSlideHeight);
