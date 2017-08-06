@@ -230,7 +230,7 @@ function nextSlide() {
 	var activeCount = 1;
 	var infiniteOffset = 0;
 
-	if (infitineScroll) {
+	if (infitineScroll === "true") {
 		infiniteOffset = numberOfTotalSlides;
 	}
 
@@ -241,7 +241,6 @@ function nextSlide() {
 
 	$( ".bwslider-slide" ).each(function(index) {
 		//Set the margins for the active slides
-
 		if ((index >= firstActiveSlide + infiniteOffset) && (index < lastActiveSlide + infiniteOffset)) {
 			$(this).addClass("bwslider-active-slide");
 			$(this).css("margin-left", ((slideWidth*activeCount)-slideWidth) + "%");
