@@ -1,3 +1,5 @@
+//var bwslider = {}
+
 //Public Members
 var numberOfActiveSlides = 1;
 var numberOfTotalSlides = 1;
@@ -8,13 +10,13 @@ var firstActiveSlide = 0;
 var lastActiveSlide = 0;
 var slideWidth = "100%";
 var slidesLeftInStack = 1;
+var slidePadding = 0;
 
 if (infitineScroll === "true") {
 	var clonedNextStack;
 	var clonedPrevStack;
 }
 
-//var bwslider = {}
 function sliderDataSetup() {
 	//Pull in values for global variables
 	numberOfActiveSlides = parseInt($(".bwslider").attr("data-slides-to-show")); //Get the number of slides to show from the data attr
@@ -23,6 +25,7 @@ function sliderDataSetup() {
 	slidesPerClick = parseInt($(".bwslider").attr("data-slides-per-click")); //Set the number of slides to scroll per click
 	transitionMode = $(".bwslider").attr("data-slide-transition").toLowerCase();
 	infitineScroll = $(".bwslider").attr("data-slide-infinite").toLowerCase();
+	slidePadding = $(".bwslider").attr("data-slide-padding");
 
 	//Set up new variables
 	var transitionSpeed = parseInt($(".bwslider").attr("data-slide-speed"));
@@ -340,6 +343,15 @@ function backwardsScroll() {
 	//on left hover scroll back
 }
 
+function sliderPaddingSetup() {
+	var newSlideHeight = $(".bwslider-slide img").height() - slidePadding;
+	var newSlideWidth = $(".bwslider-slide img").width() - slidePadding;
+	
+	$(".bwslider-slide img").css("margin", slidePadding);
+	$(".bwslider-slide img").css("height", newSlideHeight);
+	$(".bwslider-slide img").css("width", newSlideWidth);
+}
+
 function bwsliderInit() {
 	sliderDataSetup();
 	sliderTransitionSetup();
@@ -350,12 +362,15 @@ function bwsliderInit() {
 		displayInitialSlides();
 	}
 
+	if (slidePadding > 0) {
+		sliderPaddingSetup();
+	}
+
 	$(window).resize(function() {
 		var sliderHeight = $(".bwslider-active-slide img").height();
 		$(".bwslider").css("height", sliderHeight);
 	});
 }
-
 
 $(function(){
 	bwsliderInit()
