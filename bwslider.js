@@ -85,14 +85,6 @@ function displayInitialSlides() {
 			$(this).addClass("bwslider-active-slide");
 		}
 
-		if (index === firstActiveSlide - 1) {
-			//$(this).addClass("bwslider-prev-slide");
-		}
-
-		if (index === lastActiveSlide) {
-			//$(this).addClass("bwslider-next-slide");
-		}
-
 		//Line up all of the slides for slide scroll
 		if (transitionMode === "slide") {
 			$(this).css("margin-left", (slideWidth * index) + "%");
