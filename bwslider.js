@@ -347,9 +347,9 @@ function sliderPaddingSetup() {
 	var newSlideHeight = $(".bwslider-slide img").height() - slidePadding * 2;
 	var newSlideWidth = $(".bwslider-slide img").width() - slidePadding * 2;
 	
-	$(".bwslider-slide img").css("margin", slidePadding);
-	$(".bwslider-slide img").css("height", newSlideHeight);
-	$(".bwslider-slide img").css("width", newSlideWidth);
+	$(".bwslider-slide .bwslider-slide-content").css("margin", slidePadding);
+	$(".bwslider-slide .bwslider-slide-content").css("height", newSlideHeight);
+	$(".bwslider-slide .bwslider-slide-content").css("width", newSlideWidth);
 }
 
 function bwsliderInit() {
