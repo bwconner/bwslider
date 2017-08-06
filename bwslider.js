@@ -177,7 +177,7 @@ function nextClick() {
 	}
 
 	slidesLeftInStack = slidesLeftInStack - 1;
-	console.log(slidesLeftInStack);
+
 	if (infitineScroll && slidesLeftInStack == 0) {
 		slidesLeftInStack = numberOfTotalSlides;
 		//Remove previous slide stack and make old current slide stack the new previous
@@ -245,6 +245,7 @@ function nextSlide() {
 		if ((index >= firstActiveSlide + infiniteOffset) && (index < lastActiveSlide + infiniteOffset)) {
 			$(this).addClass("bwslider-active-slide");
 			$(this).css("margin-left", ((slideWidth*activeCount)-slideWidth) + "%");
+			console.log((slideWidth*activeCount)-slideWidth);
 			activeCount++;
 		} else {
 			$(this).removeClass("bwslider-active-slide");
@@ -359,7 +360,7 @@ function bwsliderInit() {
 	}
 
 	$(window).resize(function() {
-		var sliderHeight = $(".bwslider-active-slide img").height();
+		var sliderHeight = $(".bwslider-active-slide .bwslider-slide-content").height();
 		$(".bwslider").css("height", sliderHeight);
 	});
 }
