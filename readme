@@ -30,7 +30,6 @@ data-slide-delay = numeric
 data-slide-padding = defaults to 0, percentage or pixel
 	- Defaults to 0px.
 	- Any value entered in here will be made inline css padding around the elements within each slides.
-	- Not yet implemented.
 
 data-continuous = true/false
 	- Defaults to false.
@@ -48,6 +47,15 @@ data-vertical = true/false
 	- Changes the transitions of slides to be vertical animations instead of horizontal animations.
 	- Only relevant with data-slide-transition is set to slide.
 	- Not yet implemented.
+
+data-hover = true/false
+	- Defaults to false.
+	- If true, slider will scroll on hover of arrow instead of click.
+	- Not yet implemented.
+
+data-normalize-images = true/false
+	- Defaults to false.
+	- If true turns images into background images via js and styles them to allow consistent slide sizes without the need for exactly the same image sizes across all slides.
 
 ================================= Mark-Up Classes =================================
 
